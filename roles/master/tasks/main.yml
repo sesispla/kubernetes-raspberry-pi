@@ -1,0 +1,17 @@
+- name: Reset Kubernetes installation
+  shell: "kubeadm reset"
+  when: "reset==true"
+
+- name: Initialize Kubernetes cluster for ARM with flannel support
+  shell: "kubeadm init --pod-network-cidr=10.244.0.0/16"
+  register: out
+
+- debug: var=out.stdout_lines
+
+- name: Install Networking Pods
+  script: files/install-network.sh
+
+- name: Download cluster configuration
+  fetch: 
+  src: /etc/kubernetes/admin.conf
+  dest: ./kubeconfig/{{ inventory_hostname }}/admin.conf

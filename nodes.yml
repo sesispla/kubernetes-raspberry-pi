@@ -1,0 +1,10 @@
+- name: Kubernetes nodes configuration
+  hosts: nodes
+  gather_facts: yes
+  remote_user: pi
+  become: true  
+  vars_files:
+    - config.yml
+
+  roles:
+  - node
