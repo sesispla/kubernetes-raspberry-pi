@@ -1,0 +1,13 @@
+[pis]
+master.kube.lan name=master.kube.lan
+node1.kube.lan name=node1.kube.lan
+node2.kube.lan name=node2.kube.lan
+node3.kube.lan name=node3.kube.lan
+
+[master]
+master.kube.lan
+
+[nodes]
+node1.kube.lan
+node2.kube.lan
+node3.kube.lan
