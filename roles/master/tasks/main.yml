@@ -12,6 +12,4 @@
   script: files/install-network.sh
 
 - name: Download cluster configuration
-  fetch: 
-  src: /etc/kubernetes/admin.conf
-  dest: ./kubeconfig/{{ inventory_hostname }}/admin.conf
+  fetch: src=/etc/kubernetes/admin.conf dest=./kubeconfig/
