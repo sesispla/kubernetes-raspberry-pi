@@ -4,7 +4,6 @@
 
 - name: Adding node to cluster master.kube.lan
   script: files/join.sh {{ token }} {{ master }}
-#   shell: "kubeadm join --token 506f2b.1a51ab3d42ed9d10 master.kube.lan"
 
   register: out
 
