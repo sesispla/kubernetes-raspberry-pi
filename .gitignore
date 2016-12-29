@@ -1,2 +1,4 @@
 *.retry
 kubeconfig
+config.yml
+hosts
