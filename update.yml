@@ -1,0 +1,9 @@
+- name: Update HypriotOS and Kubernetes components
+  hosts: pis
+  gather_facts: yes
+  remote_user: pi
+  become: true
+  become_method: sudo
+
+  roles:
+    - update
