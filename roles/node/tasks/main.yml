@@ -2,7 +2,7 @@
   shell: "kubeadm reset"
   when: "reset==true"
 
-- name: Adding node to cluster master.kube.lan
+- name: Adding node to cluster
   script: files/join.sh {{ token }} {{ master }}
 
   register: out
