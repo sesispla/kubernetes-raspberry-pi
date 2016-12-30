@@ -1,13 +1,15 @@
 [pis]
-master.kube.lan name=master.kube.lan
-node1.kube.lan name=node1.kube.lan
-node2.kube.lan name=node2.kube.lan
-node3.kube.lan name=node3.kube.lan
+master.cluster.local name=master.cluster.local
+node1.cluster.local name=node1.cluster.local
+node2.cluster.local name=node2.cluster.local
+node3.cluster.local name=node3.cluster.local
+node4.cluster.local name=node3.cluster.local
 
 [master]
-master.kube.lan
+master.cluster.local
 
 [nodes]
-node1.kube.lan
-node2.kube.lan
-node3.kube.lan
+node1.cluster.local
+node2.cluster.local
+node3.cluster.local
+node4.cluster.local
