@@ -1,5 +1,7 @@
 # You timezone
 timezone: "Europe/Madrid"
+arch: arm
 token: 506f2b.1a51ab3d42ed9d10
 master: master.cluster.local
+cidr: 10.244.0.0/16
 reset: false
