@@ -37,40 +37,41 @@ Here is the software you will need to complete the project:
 
 ## Quick start
 
-1. Download the latest HypriotOS image from the hypriot/rpi-image-builder [release page](https://github.com/hypriot/image-builder-rpi/releases/)
-2. For each SD card, flash the image (v.1.1.3 in this case).:
+Download the latest HypriotOS image from the hypriot/rpi-image-builder [release page](https://github.com/hypriot/image-builder-rpi/releases/)
+
+For each SD card, flash the image (v.1.1.3 in this case).:
 
 ``` $ flash hypriotos-rpi-v1.1.3.img ```
 
-3. Put the SD card in all the Pis.
-4. RECOMMENDED: For each Pi, turn it on, find out its MAC address (e.g. using your router), set a static IP from them and reboot them to get the new IP.
-5. Copy "hosts.example" to "hosts" and edit the file. 
+Put the SD card in all the Pis.
+
+RECOMMENDED: For each Pi, turn it on, find out its MAC address (e.g. using your router), set a static IP from them and reboot them to get the new IP.
+
+Copy "hosts.example" to "hosts" and edit the file. 
 * Describe in "Pis" all your Raspberry Pi devices' IP (or hostname) (both master and nodes). Don't forget to set the "name" in order to rename each node during setup
 * Describe in "Master" ONE of your Raspberry Pi devices that will act as cluster master
 * Describe in "Nodes" the rest of Raspberry Pi devices that will act as cluster nodes (Please, do not include here the master!)
 
-6. Apply the base configuration for all Pi:
-
+Apply the base configuration for all Pi:
 ``` $ ansible-playbook -k -i hosts setup.yml ```
 
 IMPORTANT: Amongs others, the setup copies your public SSH key to all Pis and associates it to the user "Pi". Is important to check that the key exists at "~/.ssh/id_rsa.pub". 
 You can create a new key using the command: 
-
 ```ssh-keygen -t rsa -b 4096 ```
 
-You set another path in /roles/base/defaults/main.yml.
+You can set another path in /roles/base/defaults/main.yml.
 
-7. Copy config.example.yml to config.yml
+Copy config.example.yml to config.yml
 * Put a random Kubernetes token (<6 character string>.<16 character string>) into the "token" parameter. This token will be used for both master and nodes creation
 * Put your master hostname or IP address in the "master" variable
-8. Create the Kubernetes cluster:
 
+
+Create the Kubernetes cluster:
 ``` $ ansible-playbook -i hosts master.yml ```
 
-9. Join the nodes to the cluster:
-
+Join the nodes to the cluster:
 ```$ ansible-playbook -i hosts nodes.yml ```
 
-10. OPTIONAL: The "master.yml" file has copied for you the admin.config file from the master. This file is required to use kubectl from your computer. 
+OPTIONAL: The "master.yml" file has copied for you the admin.config file from the master. This file is required to use kubectl from your computer. 
 * Move the file to ${HOME}/.kube/config or use the flag --kubeconfig when calling to kubectl from your computer [More info](http://kubernetes.io/docs/user-guide/kubectl/kubectl_config/)
 * Alternativelly, you can connect to the cluster master and execute kubectl from there.
