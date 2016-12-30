@@ -45,9 +45,9 @@ Here is the software you will need to complete the project:
 3. Put the SD card in all the Pis.
 4. RECOMMENDED: For each Pi, turn it on, find out its MAC address (e.g. using your router), set a static IP from them and reboot them to get the new IP.
 5. Copy "hosts.example" to "hosts" and edit the file. 
-5.1 Describe in "Pis" all your Raspberry Pi devices' IP (or hostname) (both master and nodes). Don't forget to set the "name" in order to rename each node during setup
-5.2 Describe in "Master" ONE of your Raspberry Pi devices that will act as cluster master
-5.3 Describe in "Nodes" the rest of Raspberry Pi devices that will act as cluster nodes (Please, do not include here the master!)
+* Describe in "Pis" all your Raspberry Pi devices' IP (or hostname) (both master and nodes). Don't forget to set the "name" in order to rename each node during setup
+* Describe in "Master" ONE of your Raspberry Pi devices that will act as cluster master
+* Describe in "Nodes" the rest of Raspberry Pi devices that will act as cluster nodes (Please, do not include here the master!)
 
 6. Apply the base configuration for all Pi:
 
@@ -60,20 +60,17 @@ You can create a new key using the command:
 
 You set another path in /roles/base/defaults/main.yml.
 
-7. Create the Kubernetes cluster:
+7. Copy config.example.yml to config.yml
+* Put a random Kubernetes token (<6 character string>.<16 character string>) into the "token" parameter. This token will be used for both master and nodes creation
+* Put your master hostname or IP address in the "master" variable
+8. Create the Kubernetes cluster:
 
 ``` $ ansible-playbook -i hosts master.yml ```
 
-8. At the end of the output, take note of your cluster token
-8.1 e.g. In "kubeadm join --token=c9eb81.814b8c9be3806002 172.16.0.10", your token is "c9eb81.814b8c9be3806002"
-
-9. Copy config.example.yml to config.yml
-10. Set your cluster token and master ip (or hostname) in config.yml
-11. Join the nodes to the cluster:
+9. Join the nodes to the cluster:
 
 ```$ ansible-playbook -i hosts nodes.yml ```
 
-12. OPTIONAL: The "master.yml" file has copied for you the admin.config file from the master. This file is required to use kubectl from your computer. 
-12.1 Move the file to ${HOME}/.kube/config or use the flag --kubeconfig when calling to kubectl from your computer [More info](http://kubernetes.io/docs/user-guide/kubectl/kubectl_config/)
-
-Alternativelly, you can connect to the cluster master and execute kubectl from there.
+10. OPTIONAL: The "master.yml" file has copied for you the admin.config file from the master. This file is required to use kubectl from your computer. 
+* Move the file to ${HOME}/.kube/config or use the flag --kubeconfig when calling to kubectl from your computer [More info](http://kubernetes.io/docs/user-guide/kubectl/kubectl_config/)
+* Alternativelly, you can connect to the cluster master and execute kubectl from there.
