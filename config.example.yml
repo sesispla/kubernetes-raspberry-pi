@@ -1,5 +1,5 @@
 # You timezone
 timezone: "Europe/Madrid"
 token: 506f2b.1a51ab3d42ed9d10
-master: master.kube.lan
+master: master.cluster.local
 reset: false
