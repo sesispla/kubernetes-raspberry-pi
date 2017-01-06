@@ -1,2 +1,2 @@
 - name: Install Kubernetes Dashboard
-  shell: curl -sSL 'https://rawgit.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard.yaml?raw=true' | sed 's/amd64/{{arch}}/g' | kubectl create -f -
+  shell: curl -sSL 'https://rawgit.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard.yaml' | sed 's/amd64/{{arch}}/g' | kubectl create -f -
