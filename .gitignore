@@ -2,3 +2,4 @@
 kubeconfig
 config.yml
 hosts
+**/downloads/**
